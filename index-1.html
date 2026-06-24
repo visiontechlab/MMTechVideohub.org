@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Vision Tech Video Hub</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:linear-gradient(135deg,#001f54,#003f88,#0077b6);
+color:white;
+overflow-x:hidden;
+}
+
+/* NAVBAR */
+
+nav{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 8%;
+background:rgba(0,0,0,.3);
+backdrop-filter:blur(10px);
+z-index:1000;
+}
+
+.logo{
+font-size:28px;
+font-weight:bold;
+}
+
+.logo span{
+color:#87ceeb;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+gap:25px;
+}
+
+nav ul li a{
+color:white;
+text-decoration:none;
+font-weight:600;
+transition:.3s;
+}
+
+nav ul li a:hover{
+color:#87ceeb;
+}
+
+.menu-btn{
+display:none;
+font-size:28px;
+cursor:pointer;
+}
+
+/* HERO */
+
+.hero{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:120px 20px;
+}
+
+.hero h1{
+font-size:65px;
+margin-bottom:20px;
+}
+
+.hero p{
+max-width:800px;
+font-size:20px;
+line-height:1.8;
+margin-bottom:30px;
+}
+
+.hero-btn{
+background:#87ceeb;
+color:#001f54;
+padding:15px 35px;
+border-radius:50px;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+}
+
+.hero-btn:hover{
+transform:translateY(-5px);
+}
+
+/* SEARCH */
+
+.search-section{
+padding:30px 8%;
+text-align:center;
+}
+
+.search-section input{
+width:100%;
+max-width:600px;
+padding:15px;
+border:none;
+outline:none;
+border-radius:50px;
+font-size:16px;
+}
+
+/* FILTERS */
+
+.filter-section{
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+padding:20px;
+}
+
+.filter-section button{
+padding:12px 25px;
+border:none;
+border-radius:30px;
+cursor:pointer;
+font-weight:bold;
+background:white;
+color:#001f54;
+transition:.3s;
+}
+
+.filter-section button:hover{
+transform:translateY(-5px);
+}
+
+/* VIDEO GALLERY */
+
+.video-gallery{
+padding:50px 8%;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:25px;
+}
+
+.video-card{
+background:rgba(255,255,255,.1);
+backdrop-filter:blur(10px);
+border-radius:20px;
+overflow:hidden;
+transition:.4s;
+}
+
+.video-card:hover{
+transform:translateY(-10px);
+}
+
+.video-card video{
+width:100%;
+height:250px;
+object-fit:cover;
+}
+
+.video-content{
+padding:20px;
+}
+
+.video-content h3{
+margin-bottom:10px;
+color:#87ceeb;
+}
+
+.video-content p{
+line-height:1.6;
+}
+
+/* STATS */
+
+.stats-section{
+padding:80px 8%;
+text-align:center;
+}
+
+.stats-section h2{
+margin-bottom:40px;
+font-size:40px;
+}
+
+.stats-container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+}
+
+.stat-card{
+padding:35px;
+border-radius:20px;
+background:rgba(255,255,255,.1);
+backdrop-filter:blur(10px);
+}
+
+.stat-card h3{
+font-size:45px;
+color:#87ceeb;
+margin-bottom:10px;
+}
+
+/* CONTACT */
+
+.contact-section{
+padding:80px 8%;
+text-align:center;
+}
+
+.contact-section h2{
+margin-bottom:25px;
+font-size:40px;
+}
+
+.contact-section p{
+margin:12px 0;
+font-size:18px;
+}
+
+/* WHATSAPP */
+
+.whatsapp-btn{
+position:fixed;
+bottom:90px;
+right:20px;
+width:60px;
+height:60px;
+background:#25D366;
+color:white;
+text-decoration:none;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:28px;
+border-radius:50%;
+z-index:999;
+}
+
+/* TOP BUTTON */
+
+#topBtn{
+position:fixed;
+bottom:20px;
+right:20px;
+width:60px;
+height:60px;
+border:none;
+border-radius:50%;
+background:#87ceeb;
+color:#001f54;
+font-size:22px;
+cursor:pointer;
+display:none;
+font-weight:bold;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.menu-btn{
+display:block;
+}
+
+nav ul{
+display:none;
+position:absolute;
+top:80px;
+left:0;
+width:100%;
+background:#001f54;
+flex-direction:column;
+padding:20px;
+}
+
+nav ul.active{
+display:flex;
+}
+
+.hero h1{
+font-size:40px;
+}
+
+.hero p{
+font-size:17px;
+}
+
+.video-card video{
+height:220px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+<div class="logo">
+MM Tech <span>Video Hub</span>
+</div>
+
+<div class="menu-btn" id="menuBtn">
+☰
+</div>
+
+<ul id="navLinks">
+
+<li><a href="#home">Home</a></li>
+
+<li><a href="#videos">Videos</a></li>
+
+<li><a href="#stats">Statistics</a></li>
+
+<li><a href="#contact">Contact</a></li>
+
+</ul>
+
+</nav>
+
+
+
+<!-- HERO SECTION -->
+
+<section class="hero" id="home">
+
+<h1>MAHMUD MEDIA TECH VIDEO HUB</h1>
+
+<p>
+A collection of tutorials, event coverage,
+quote videos, leadership sessions and creative media projects.
+</p>
+
+<a href="#videos" class="hero-btn">
+Watch Videos
+</a>
+
+</section>
+
+
+
+<!-- SEARCH -->
+
+<section class="search-section">
+
+<input
+type="text"
+id="searchInput"
+placeholder="Search videos..."
+>
+
+</section>
+
+
+
+<!-- FILTER BUTTONS -->
+
+<section class="filter-section">
+
+<button onclick="filterVideos('all')">
+All
+</button>
+<!-- 
+<button onclick="filterVideos('tutorial')">
+Tutorials
+</button> -->
+
+<button onclick="filterVideos('quotes')">
+Quote Videos
+</button>
+<!-- 
+<button onclick="filterVideos('events')">
+Events
+</button> -->
+
+<button onclick="filterVideos('business')">
+Business Ads
+</button>
+
+</section>
+
+
+
+<!-- VIDEO GALLERY -->
+
+<section class="video-gallery" id="videos">
+
+<!-- CARD 1 
+
+<div class="video-card tutorial">
+
+<video controls>
+
+<source src="videos\soyan 1.mp4" type="video/mp4">
+
+</video>
+
+<div class="video-content">
+
+<h3>HTML Tutorial</h3>
+
+<p>
+Frontend development training series.
+</p>
+
+</div>
+-->
+
+</div>
+
+
+
+<!-- CARD 2 -->
+
+<div class="video-card quotes">
+
+<video controls>
+
+<source src="videos\soyan 2.mp4" type="video/mp4">
+
+</video>
+
+<div class="video-content">
+
+<h3>SOYAN Quote Video</h3>
+
+<p>
+Inspirational leadership content.
+</p>
+
+</div>
+
+</div>
+
+
+<!-- CARD 2 -->
+
+<div class="video-card quotes">
+
+<video controls>
+
+<source src="videos\Soyan 14.mp4" type="video/mp4">
+
+</video>
+
+<div class="video-content">
+
+<h3>SOYAN Quote Video</h3>
+
+<p>
+Inspirational leadership content.
+</p>
+
+</div>
+
+</div>
+
+
+<!-- CARD 2 -->
+
+<div class="video-card quotes">
+
+<video controls>
+
+<source src="videos\Soyan 13.mp4" type="video/mp4">
+
+</video>
+
+<div class="video-content">
+
+<h3>SOYAN Quote Video</h3>
+
+<p>
+Inspirational leadership content.
+</p>
+
+</div>
+
+</div>
+
+
+<!-- CARD 2 -->
+
+<div class="video-card quotes">
+
+<video controls>
+
+<source src="videos\Soyan 12.mp4" type="video/mp4">
+
+</video>
+
+<div class="video-content">
+
+<h3>SOYAN Quote Video</h3>
+
+<p>
+Inspirational leadership content.
+</p>
+
+</div>
+
+</div>
+
+
+<!-- CARD 2 -->
+
+<div class="video-card quotes">
+
+<video controls>
+
+<source src="videos\Soyan 11.mp4" type="video/mp4">
+
+</video>
+
+<div class="video-content">
+
+<h3>SOYAN Quote Video</h3>
+
+<p>
+Inspirational leadership content.
+</p>
+
+</div>
+
+</div>
+
+
+<!-- CARD 2 -->
+
+<div class="video-card quotes">
+
+<video controls>
+
+<source src="videos\Soyan 10.mp4" type="video/mp4">
+
+</video>
+
+<div class="video-content">
+
+<h3>SOYAN Quote Video</h3>
+
+<p>
+Inspirational leadership content.
+</p>
+
+</div>
+
+</div>
+
+
+<!-- CARD 2 -->
+
+<div class="video-card quotes">
+
+<video controls>
+
+<source src="videos\Soyan 9.mp4" type="video/mp4">
+
+</video>
+
+<div class="video-content">
+
+<h3>SOYAN Quote Video</h3>
+
+<p>
+Inspirational leadership content.
+</p>
+
+</div>
+
+</div>
+
+
+<!-- CARD 2 -->
+
+<div class="video-card quotes">
+
+<video controls>
+
+<source src="videos\Soyan 8.mp4" type="video/mp4">
+
+</video>
+
+<div class="video-content">
+
+<h3>SOYAN Quote Video</h3>
+
+<p>
+Inspirational leadership content.
+</p>
+
+</div>
+
+</div>
+
+
+<!-- CARD 2 -->
+
+<div class="video-card quotes">
+
+<video controls>
+
+<source src="videos\Soyan 7.mp4" type="video/mp4">
+
+</video>
+
+<div class="video-content">
+
+<h3>SOYAN Quote Video</h3>
+
+<p>
+Inspirational leadership content.
+</p>
+
+</div>
+
+</div>
+
+
+<!-- CARD 2 -->
+
+<div class="video-card quotes">
+
+<video controls>
+
+<source src="videos\soyan 6.mp4" type="video/mp4">
+
+</video>
+
+<div class="video-content">
+
+<h3>SOYAN Quote Video</h3>
+
+<p>
+Inspirational leadership content.
+</p>
+
+</div>
+
+</div>
+
+
+
+
+
+<!-- CARD 3 -->
+
+<div class="video-card events">
+
+<video controls>
+
+<source src="videos\ISLAMIYYA 2.mp4" type="video/mp4">
+
+</video>
+
+<div class="video-content">
+
+<h3>Islamiyya</h3>
+
+<p>
+Highlights from Islamiyya Classes.
+</p>
+
+</div>
+
+</div>
+
+
+
+<!-- CARD 3 -->
+
+<div class="video-card events">
+
+<video controls>
+
+<source src="videos\ISLAMIYYA 3.mp4" type="video/mp4">
+
+</video>
+
+<div class="video-content">
+
+<h3>Islamiyya</h3>
+
+<p>
+Highlights from Islamiyya Classes.
+</p>
+
+</div>
+
+</div>
+
+
+
+
+<!-- CARD 4 
+
+<div class="video-card business">
+
+<video controls>
+
+<source src="videos\soyan 4.mp4" type="video/mp4">
+
+</video>
+
+<div class="video-content">
+
+<h3>Business Advertisement</h3>
+
+<p>
+Promotional media content.
+</p>
+
+</div>
+
+</div>
+-->
+
+<!-- CARD 4 -->
+
+<div class="video-card business">
+
+<video controls>
+
+<source src="videos\Biz vid 3.mp4" type="video/mp4">
+
+</video>
+
+<div class="video-content">
+
+<h3>Business Advertisement</h3>
+
+<p>
+Promotional media content.
+</p>
+
+</div>
+
+</div>
+
+
+<!-- CARD 4 -->
+
+<div class="video-card business">
+
+<video controls>
+
+<source src="videos\Biz vid 1.mp4" type="video/mp4">
+
+</video>
+
+<div class="video-content">
+
+<h3>Business Advertisement</h3>
+
+<p>
+Promotional media content.
+</p>
+
+</div>
+
+</div>
+
+
+<!-- CARD 4 -->
+
+<div class="video-card business">
+
+<video controls>
+
+<source src="videos\Biz vid 2.mp4" type="video/mp4">
+
+</video>
+
+<div class="video-content">
+
+<h3>Business Advertisement</h3>
+
+<p>
+Promotional media content.
+</p>
+
+</div>
+
+</div>
+
+
+
+</section>
+
+
+
+<!-- STATISTICS -->
+
+<section class="stats-section" id="stats">
+
+<h2>Video Hub Statistics</h2>
+
+<div class="stats-container">
+
+<div class="stat-card">
+
+<h3>50+</h3>
+
+<p>Videos Uploaded</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>1000+</h3>
+
+<p>Audience Reach</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>4</h3>
+
+<p>Categories</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>100%</h3>
+
+<p>Responsive</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- CONTACT -->
+
+<section class="contact-section" id="contact">
+
+<h2>Contact Me</h2>
+
+<p>📞 07044400164</p>
+
+<p>📞 07086686288</p>
+
+<p>📧 mahmudabubakarmadaki223@gmail.com</p>
+
+</section>
+
+
+
+<!-- WHATSAPP BUTTON -->
+
+<a
+href="https://wa.me/2347044400164"
+target="_blank"
+class="whatsapp-btn"
+>
+
+💬
+
+</a>
+
+
+
+<!-- BACK TO TOP -->
+
+<button id="topBtn">
+
+↑
+
+</button>
+
+
+
+<script>
+
+/* ==========================
+   MOBILE MENU
+========================== */
+
+const menuBtn =
+document.getElementById("menuBtn");
+
+const navLinks =
+document.getElementById("navLinks");
+
+menuBtn.addEventListener("click",()=>{
+
+navLinks.classList.toggle("active");
+
+});
+
+
+/* ==========================
+   SEARCH VIDEOS
+========================== */
+
+const searchInput =
+document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup",function(){
+
+let value =
+this.value.toLowerCase();
+
+let cards =
+document.querySelectorAll(".video-card");
+
+cards.forEach(card=>{
+
+let text =
+card.innerText.toLowerCase();
+
+if(text.includes(value)){
+
+card.style.display="block";
+
+}
+
+else{
+
+card.style.display="none";
+
+}
+
+});
+
+});
+
+
+/* ==========================
+   VIDEO FILTER
+========================== */
+
+function filterVideos(category){
+
+let cards =
+document.querySelectorAll(".video-card");
+
+cards.forEach(card=>{
+
+if(category === "all"){
+
+card.style.display="block";
+
+}
+
+else if(
+card.classList.contains(category)
+){
+
+card.style.display="block";
+
+}
+
+else{
+
+card.style.display="none";
+
+}
+
+});
+
+}
+
+
+/* ==========================
+   BACK TO TOP BUTTON
+========================== */
+
+let topBtn =
+document.getElementById("topBtn");
+
+window.addEventListener("scroll",()=>{
+
+if(
+document.body.scrollTop > 300 ||
+document.documentElement.scrollTop > 300
+){
+
+topBtn.style.display="block";
+
+}
+
+else{
+
+topBtn.style.display="none";
+
+}
+
+});
+
+
+topBtn.addEventListener("click",()=>{
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+});
+
+
+/* ==========================
+   ANIMATED COUNTERS
+========================== */
+
+function counter(id,target){
+
+let count = 0;
+
+let speed = target / 100;
+
+let interval =
+setInterval(()=>{
+
+count += speed;
+
+if(count >= target){
+
+count = target;
+
+clearInterval(interval);
+
+}
+
+document.getElementById(id).innerHTML =
+Math.floor(count) + "+";
+
+},20);
+
+}
+
+
+/* ==========================
+   OPTIONAL PARTICLES
+========================== */
+
+for(let i=0;i<25;i++){
+
+let particle =
+document.createElement("div");
+
+particle.style.width="6px";
+
+particle.style.height="6px";
+
+particle.style.background=
+"rgba(255,255,255,.4)";
+
+particle.style.position="fixed";
+
+particle.style.borderRadius="50%";
+
+particle.style.left=
+Math.random()*100+"vw";
+
+particle.style.top=
+Math.random()*100+"vh";
+
+particle.style.pointerEvents="none";
+
+particle.style.zIndex="-1";
+
+document.body.appendChild(particle);
+
+let duration =
+5 + Math.random()*10;
+
+particle.animate([
+
+{
+transform:"translateY(0px)"
+},
+
+{
+transform:"translateY(-100vh)"
+}
+
+],{
+
+duration:duration*1000,
+
+iterations:Infinity
+
+});
+
+}
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
